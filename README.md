@@ -4,7 +4,7 @@ Repository này được tạo ra để lưu lại toàn bộ quá trình tự h
 
 ## 📅 Lộ Trình Học Tập
 
-| # Ngày | Chủ đề bài học | Trạng thái |
+| Ngày | Chủ đề bài học | Trạng thái |
 | :---: | :--- | :---: |
 | 00 | Cài đặt môi trường | ✅ Đã hoàn thành |
 | 01 | [Giới thiệu Python](./01_Day_Introduction/) | ✅ Đã hoàn thành |
