@@ -6,7 +6,8 @@ Repository này được tạo ra để lưu lại toàn bộ quá trình tự h
 
 | # Ngày | Chủ đề bài học | Trạng thái |
 | :---: | :--- | :---: |
-| 01 | [Giới thiệu & Cài đặt môi trường](./01_Day_Introduction/) | ⏳ Đang học |
-| 02 | Biến và Các hàm tích hợp sẵn | ❌ Chưa học |
+| 00 | Cài đặt môi trường | ✅ Đã hoàn thành |
+| 01 | [Giới thiệu Python](./01_Day_Introduction/) | ✅ Đã hoàn thành |
+| 02 | Biến và Các hàm tích hợp sẵn | ⏳ Đang học |
 | 03 | Toán tử (Operators) | ❌ Chưa học |
 
