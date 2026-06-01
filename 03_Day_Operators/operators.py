@@ -1,0 +1,102 @@
+# Arithmetic Operations in Python
+# Integers 
+print('Addition: ', 1 + 2)
+print('Subtraction: ', 2 - 1)
+print('Multiplication: ', 2 * 3)
+print('Division: ', 4 / 2)
+print('Division: ', 6 / 2)
+print('Division: ', 7 / 2)
+print('Division without the remainder: ', 7 // 2)
+print('Division without the remainder: ', 7 // 3)
+print('Modulus:', 3 % 2)
+print('Exponentation: ', 2 ** 3)
+
+#Floating numbers.
+print('Floating Point Number, PI: ', 3.14)
+print('Floating Point Number, gravity: ', 9.81)
+
+#Complex numbers.
+print('Complex number: ', 1 + 1j)
+print('Multiplying complex number: ', (1 + 1j) * (1 - 1j))
+
+# Declaring the variable at the top first
+a = 3
+b = 2
+# Arithmetic operations and assigning the result to a variable
+total = a + b
+diff = a - b
+product = a * b
+division = a / b
+remainder = a % b
+floor_division = a // b
+exponential = a ** b
+
+print('a + b = ', total)
+print('a - b = ', diff)
+print('a * b = ', product)
+print('a / b = ', division)
+print('a % b = ', remainder)
+print('a // b = ', floor_division)
+print('a ** b = ', exponential)
+
+
+# Calculating area of a circle
+radius = 10
+area_of_circle = 3.14 * radius ** 2
+print('Area of circle: ', area_of_circle)
+
+# Calculating area of a rectangle
+length = 10
+width = 20
+area_of_rectangle = length * width
+print('Area of rectangle: ', area_of_rectangle)
+
+# Calculating a weight of an object
+mass = 75
+gravity = 9.81
+weight = mass * gravity
+print(weight,'N')
+
+# Calculate the density of a liquid
+masss = 75
+volume = 0.075
+density = masss / volume
+print(density, 'Kg/m^3')
+
+#Comparision Operators
+print(3 > 2)
+print(3 >= 2)
+print(3 < 2)
+print(2 < 3)
+print(2 <= 3)
+print(3 == 2)
+print(3 != 2)
+
+# Comparing something gives either a True or False
+print('True == True', True == True)
+print('True == False', True == False)
+print('False == False', False == False)
+
+
+print('1 is 1', 1 is 1)                   
+print('1 is not 2', 1 is not 2)           
+print('A in Asabeneh', 'A' in 'Asabeneh')
+print('B not in Asabeneh', 'B' in 'Asabeneh') 
+print('coding' in 'coding for all') 
+print('a in an:', 'a' in 'an')      
+print('4 is 2 ** 2:', 4 is 2 ** 2)  
+
+#Logic Operators
+print(3 > 2 and 4 > 3) 
+print(3 > 2 and 4 < 3) 
+print(3 < 2 and 4 < 3) 
+print('True and True: ', True and True)
+print(3 > 2 or 4 > 3)  
+print(3 > 2 or 4 < 3)  
+print(3 < 2 or 4 < 3)  
+print('True or False:', True or False)
+print(not 3 > 2)    
+print(not True)     
+print(not False)    
+print(not not True)  
+print(not not False) 
