@@ -10,8 +10,8 @@ Mỗi ngày học sẽ bao gồm phần ghi chú lý thuyết, ví dụ code và
 |  00  | [Cài đặt môi trường](./00_Day_Setup/)                                  |   ✅ Đã hoàn thành   |
 |  01  | [Giới thiệu Python](./01_Day_Introduction/)                            |   ✅ Đã hoàn thành   |
 |  02  | [Biến và Các hàm tích hợp sẵn](./02_Day_Variables_Build_In_Functions/) |   ✅ Đã hoàn thành   |
-|  03  | [Toán tử và Boolean](./03_Day_Operators/)                              | 📝 Đang làm bài tập |
-|  04  | Chuỗi ký tự                                                            |     🔒 Chưa học     |
+|  03  | [Toán tử và Boolean](./03_Day_Operators/)                              |   ✅ Đã hoàn thành   |
+|  04  | [Chuỗi ký tự](./04_Day_Strings/)                                       |     📝 Đang học     |
 |  05  | Danh sách                                                              |     🔒 Chưa học     |
 |  06  | Tuple                                                                  |     🔒 Chưa học     |
 |  07  | Set                                                                    |     🔒 Chưa học     |

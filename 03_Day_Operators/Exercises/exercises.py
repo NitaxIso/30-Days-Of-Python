@@ -86,6 +86,25 @@ print(f"Type of '10' and 10 is: {type('10') == type(10)}")
 
 
 print("--- 20. Check int('9.8') == 10. ---")
+try:
+    print(int(float('9.8')) == 10)
+except ValueError:
+    print("Cannot convert directly")
+
+
 print("--- 21. Calculate weekly earning. ---")
+hours = float(input('Enter hours: '))
+rate_per_hours = float(input('Enter rate per hours: '))
+weekly_earning = hours * rate_per_hours
+print(f"Your weekly earning is : {weekly_earning}")
+
+
 print("--- 22. Calculate lived seconds. ---")
+numbers_of_years = int(input('Enter number of years you lived: '))
+numbers_of_seconds = numbers_of_years * 365 * 24 * 60 * 60
+print(f"You have lived for {numbers_of_seconds} seconds")
+
+
 print("--- 23. Display table of powers. ---")
+for i in range(1,6):
+    print(f"{i} 1 {i} {i ** 2} {i ** 3}")
