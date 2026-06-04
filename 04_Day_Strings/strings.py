@@ -64,7 +64,7 @@ print(formated_string3)
 
 #String formatting - New Style
 formated_string5 = 'I am {} {}. I learning{}'.format(first_name,last_name,language)
-formated_string4 = 'The area of a circle with a radius {} is {%.2f}.'.format(radius,area)
+formated_string4 = 'The area of a circle with a radius {} is {:.2f}.'.format(radius,area)
 
 #Sting Interpolation - f-Strings
 a = 3
@@ -76,3 +76,40 @@ print(f'{a} / {b} = {a / b:.2f}')
 print(f'{a} % {b} = {a % b}')
 print(f'{a} // {b} = {a // b}')
 print(f'{a} ** {b} = {a ** b}')
+
+
+
+#Python Strings as Sequences of Characters
+language = 'Python'
+first_letter = language[0]
+print(first_letter)
+second_letter = language[1]
+print(second_letter)
+last_index = len(language) - 1
+last_letter = language[last_index]
+print(last_letter)
+
+#Sử dụng index âm. -1 là index cuối cùng.
+last_letter_index_negative = language[-1]
+print(last_letter_index_negative)
+second_letter_index_negative = language[-2]
+print(second_letter_index_negative)
+
+#Slicing Python Strings : cắt chuỗi
+first_three = language[0:3]
+print(first_three)
+last_three = language[3:6]
+print(last_three)
+last_three_index_negative = language[-3:]
+last_three_index_positive = language[3:]
+print(last_three_index_negative)
+print(last_three_index_positive)
+
+#Reverse String : dịch ngược chuỗi
+reverse_string = 'Hello, World!'
+print(greeting[::1])
+
+#Skipping Characters While Slicing
+pto = language[0:6:2] 
+print(pto)
+
