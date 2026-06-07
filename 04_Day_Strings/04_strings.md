@@ -1,263 +1,426 @@
-# 30 Days Of Python - Day 04: Strings
-
-> Bản ghi chú tiếng Việt để ôn lại kiến thức **Day 04 - Strings**.  
-> Nội dung được viết lại dựa trên phần lý thuyết `04_strings.md` trong repo **30-Days-Of-Python** của Asabeneh Yetayeh.
-
----
+# Day 04 - Strings Trong Python
 
 ## Mục tiêu bài học
 
-Sau bài này, bạn cần nắm được:
+Ở ngày thứ 4, mình sẽ học về String trong Python.
 
-- String là gì trong Python.
-- Cách tạo chuỗi bằng dấu nháy đơn, nháy kép và ba dấu nháy.
-- Cách nối chuỗi.
-- Cách dùng escape sequence như `\n`, `\t`, `\\`.
-- Cách format chuỗi bằng `%`, `.format()` và f-string.
-- Cách truy cập ký tự trong chuỗi bằng index.
-- Cách cắt chuỗi bằng slicing.
-- Một số method quan trọng của string.
+String là kiểu dữ liệu dùng để lưu trữ văn bản. Đây là một kiểu dữ liệu rất quan trọng vì khi lập trình, mình thường xuyên phải làm việc với tên, địa chỉ, email, câu văn, dữ liệu nhập từ người dùng,...
+
+Sau bài này, mình cần nắm được:
+
+* String là gì
+* Cách tạo chuỗi trong Python
+* Cách nối chuỗi
+* Cách dùng escape sequence
+* Cách định dạng chuỗi
+* Cách truy cập từng ký tự trong chuỗi
+* Cách cắt chuỗi bằng slicing
+* Cách đảo ngược chuỗi
+* Các string methods thường dùng
 
 ---
 
-## 1. String là gì?
+## 1. String trong Python
 
-Trong Python, **string** là kiểu dữ liệu dùng để lưu văn bản.
+String là kiểu dữ liệu dùng để biểu diễn văn bản.
 
-Bất kỳ dữ liệu nào được đặt trong:
+Trong Python, string có thể được viết bằng:
 
-- dấu nháy đơn `'...'`
-- dấu nháy kép `"..."`
-- ba dấu nháy đơn `'''...'''`
-- ba dấu nháy kép `"""..."""`
-
-đều được xem là **chuỗi**.
+* Dấu nháy đơn `' '`
+* Dấu nháy kép `" "`
+* Ba dấu nháy đơn `''' '''`
+* Ba dấu nháy kép `""" """`
 
 Ví dụ:
 
-```python
-name = 'Python'
-message = "Hello, World!"
 ```
-
-Có thể kiểm tra độ dài chuỗi bằng hàm `len()`:
-
-```python
-greeting = 'Hello, World!'
-print(len(greeting))  # 13
-```
-
-> Ghi nhớ: `len()` đếm số ký tự trong chuỗi, bao gồm cả dấu cách, dấu phẩy, dấu chấm, ký tự đặc biệt.
-
----
-
-## 2. Tạo chuỗi trong Python
-
-### 2.1 Chuỗi một dòng
-
-```python
 letter = 'P'
-print(letter)       # P
-print(len(letter))  # 1
+print(letter)
 
-sentence = "I am learning Python"
+name = "Lê Công Luyến"
+print(name)
+
+sentence = "Tôi đang học Python"
 print(sentence)
 ```
 
-Chuỗi có thể chỉ gồm **1 ký tự** hoặc gồm **nhiều ký tự**.
+Kết quả:
+
+```
+P
+Lê Công Luyến
+Tôi đang học Python
+```
+
+Trong ví dụ trên:
+
+* Biến `letter` lưu một ký tự
+* Biến `name` lưu họ tên
+* Biến `sentence` lưu một câu văn
 
 ---
 
-### 2.2 Chuỗi nhiều dòng
+## 2. Kiểm tra độ dài của chuỗi
 
-Nếu muốn viết chuỗi trên nhiều dòng, dùng ba dấu nháy đơn hoặc ba dấu nháy kép.
+Để kiểm tra độ dài của một chuỗi, mình dùng hàm `len()`.
 
-```python
-multiline_string = '''I am learning Python.
-Python is easy to read.
-I will practice every day.'''
+Hàm `len()` sẽ trả về số lượng ký tự có trong chuỗi.
 
-print(multiline_string)
+Ví dụ:
+
+```
+name = "Lê Công Luyến"
+
+print(len(name))
 ```
 
-Hoặc:
+Kết quả:
 
-```python
-multiline_string = """I am learning Python.
-Python is easy to read.
-I will practice every day."""
-
-print(multiline_string)
+```
+13
 ```
 
-Dạng này thường dùng khi cần lưu đoạn văn bản dài.
+Lưu ý:
 
----
+Khoảng trắng cũng được tính là một ký tự.
 
-## 3. Nối chuỗi - String Concatenation
+Ví dụ:
 
-**Concatenation** nghĩa là nối nhiều chuỗi lại với nhau.
-
-Trong Python, dùng toán tử `+` để nối chuỗi.
-
-```python
-first_name = 'Nguyen'
-last_name = 'Giang'
-space = ' '
-
-full_name = first_name + space + last_name
-print(full_name)  # Nguyen Giang
 ```
+first_name = "Lê Công"
+last_name = "Luyến"
+full_name = "Lê Công Luyến"
 
-Có thể kiểm tra độ dài từng chuỗi:
-
-```python
 print(len(first_name))
 print(len(last_name))
 print(len(full_name))
 ```
 
-> Lưu ý: Nếu nối chuỗi với số nguyên hoặc số thực, cần chuyển số sang chuỗi bằng `str()`.
+Kết quả:
 
-Sai:
-
-```python
-age = 20
-print('I am ' + age)  # lỗi
+```
+7
+5
+13
 ```
 
-Đúng:
+Giải thích:
 
-```python
-age = 20
-print('I am ' + str(age))
-```
+* `"Lê Công"` có 7 ký tự, tính cả khoảng trắng
+* `"Luyến"` có 5 ký tự
+* `"Lê Công Luyến"` có 13 ký tự, tính cả 2 khoảng trắng
 
 ---
 
-## 4. Escape Sequences trong chuỗi
+## 3. Chuỗi nhiều dòng
 
-Escape sequence là các ký tự đặc biệt bắt đầu bằng dấu `\`.
-
-Một số escape sequence thường dùng:
-
-| Ký tự | Ý nghĩa |
-|---|---|
-| `\n` | Xuống dòng mới |
-| `\t` | Tab, tạo khoảng cách ngang |
-| `\\` | In ra dấu gạch chéo ngược `\` |
-| `\'` | In ra dấu nháy đơn `'` |
-| `\"` | In ra dấu nháy kép `"` |
+Khi muốn viết một chuỗi có nhiều dòng, mình dùng ba dấu nháy đơn hoặc ba dấu nháy kép.
 
 Ví dụ:
 
-```python
-print('Hello\nPython')
+```
+information = '''Tôi tên là Lê Công Luyến.
+Tôi 20 tuổi.
+Tôi sống ở Hồ Chí Minh City, Việt Nam.'''
+
+print(information)
 ```
 
 Kết quả:
 
-```text
-Hello
-Python
+```
+Tôi tên là Lê Công Luyến.
+Tôi 20 tuổi.
+Tôi sống ở Hồ Chí Minh City, Việt Nam.
 ```
 
-Ví dụ dùng tab:
-
-```python
-print('Name\tAge\tCountry')
-print('Giang\t20\tViet Nam')
-```
-
-Ví dụ in dấu `\`:
-
-```python
-print('This is a backslash: \\')
-```
-
-Ví dụ in dấu nháy kép:
-
-```python
-print('Python starts with \"Hello, World!\"')
-```
+Cách này thường dùng khi mình muốn viết đoạn văn bản dài hoặc nhiều dòng.
 
 ---
 
-## 5. String Formatting - Định dạng chuỗi
+## 4. Nối chuỗi trong Python
 
-String formatting dùng để chèn biến vào trong chuỗi một cách gọn hơn.
+Nối chuỗi là ghép nhiều chuỗi lại với nhau.
 
-Python có nhiều cách format chuỗi:
-
-1. Old style `%`
-2. `.format()`
-3. f-string
-
----
-
-### 5.1 Old Style Formatting - dùng `%`
-
-Một số ký hiệu thường dùng:
-
-| Ký hiệu | Ý nghĩa |
-|---|---|
-| `%s` | Chuỗi hoặc dữ liệu có thể chuyển thành chuỗi |
-| `%d` | Số nguyên |
-| `%f` | Số thực |
-| `%.2f` | Số thực lấy 2 chữ số sau dấu chấm |
+Trong Python, mình dùng dấu `+` để nối chuỗi.
 
 Ví dụ:
 
-```python
-first_name = 'Nguyen'
-last_name = 'Giang'
-language = 'Python'
+```
+first_name = "Lê Công"
+last_name = "Luyến"
 
-text = 'I am %s %s. I learn %s.' % (first_name, last_name, language)
-print(text)
+full_name = first_name + last_name
+
+print(full_name)
 ```
 
-Ví dụ với số:
+Kết quả:
 
-```python
+```
+Lê CôngLuyến
+```
+
+Kết quả bị dính liền vì giữa `first_name` và `last_name` chưa có khoảng trắng.
+
+Muốn có khoảng trắng, mình thêm một chuỗi `" "` ở giữa.
+
+Ví dụ:
+
+```
+first_name = "Lê Công"
+last_name = "Luyến"
+space = " "
+
+full_name = first_name + space + last_name
+
+print(full_name)
+```
+
+Kết quả:
+
+```
+Lê Công Luyến
+```
+
+Giải thích:
+
+* `first_name` chứa `"Lê Công"`
+* `space` chứa khoảng trắng
+* `last_name` chứa `"Luyến"`
+* Khi nối lại sẽ được `"Lê Công Luyến"`
+
+---
+
+## 5. Ví dụ nối nhiều chuỗi
+
+Mình có thể nối nhiều chuỗi để tạo thành một câu hoàn chỉnh.
+
+Ví dụ:
+
+```
+first_name = "Lê Công"
+last_name = "Luyến"
+age = "20"
+country = "Việt Nam"
+city = "Hồ Chí Minh City"
+
+sentence = "Tôi tên là " + first_name + " " + last_name + ". Tôi " + age + " tuổi. Tôi sống ở " + city + ", " + country + "."
+
+print(sentence)
+```
+
+Kết quả:
+
+```
+Tôi tên là Lê Công Luyến. Tôi 20 tuổi. Tôi sống ở Hồ Chí Minh City, Việt Nam.
+```
+
+Lưu ý:
+
+Nếu muốn nối số với chuỗi bằng dấu `+`, số đó cần được chuyển thành string trước.
+
+Ví dụ sai:
+
+```
+age = 20
+print("Tôi " + age + " tuổi")
+```
+
+Ví dụ đúng:
+
+```
+age = 20
+print("Tôi " + str(age) + " tuổi")
+```
+
+Kết quả:
+
+```
+Tôi 20 tuổi
+```
+
+---
+
+## 6. Escape Sequence trong Python
+
+Escape sequence là các ký tự đặc biệt trong chuỗi.
+
+Nó bắt đầu bằng dấu gạch chéo ngược `\`.
+
+Một số escape sequence thường dùng:
+
+Escape Sequence Ý nghĩa
+`\n` Xuống dòng mới
+`\t` Tạo khoảng tab
+`\\` In ra dấu gạch chéo ngược
+`\'` In ra dấu nháy đơn
+`\"` In ra dấu nháy kép
+
+Ví dụ:
+
+```
+print("Tôi tên là Lê Công Luyến.\nTôi 20 tuổi.")
+print("Tên\tTuổi\tQuốc gia")
+print("Luyến\t20\tViệt Nam")
+```
+
+Kết quả:
+
+```
+Tôi tên là Lê Công Luyến.
+Tôi 20 tuổi.
+Tên    Tuổi    Quốc gia
+Luyến  20      Việt Nam
+```
+
+Giải thích:
+
+* `\n` dùng để xuống dòng
+* `\t` dùng để tạo khoảng cách dạng tab
+
+---
+
+## 7. In dấu nháy trong chuỗi
+
+Nếu trong chuỗi có dấu nháy, mình có thể dùng escape sequence để tránh lỗi.
+
+Ví dụ:
+
+```
+print("Python bắt đầu bằng câu: \"Hello, World!\"")
+```
+
+Kết quả:
+
+```
+Python bắt đầu bằng câu: "Hello, World!"
+```
+
+Ví dụ khác:
+
+```
+print('It\'s Python')
+```
+
+Kết quả:
+
+```
+It's Python
+```
+
+Giải thích:
+
+* `\"` giúp in dấu nháy kép
+* `\'` giúp in dấu nháy đơn
+
+---
+
+## 8. Định dạng chuỗi trong Python
+
+Định dạng chuỗi giúp mình đưa giá trị của biến vào trong chuỗi dễ hơn.
+
+Trong Python có nhiều cách định dạng chuỗi:
+
+* Dùng `%`
+* Dùng `.format()`
+* Dùng f-string
+
+Trong đó, f-string là cách dễ đọc và thường được dùng nhiều nhất hiện nay.
+
+---
+
+## 9. Định dạng chuỗi bằng `%`
+
+Đây là cách định dạng chuỗi kiểu cũ.
+
+Một số ký hiệu thường dùng:
+
+Ký hiệu Ý nghĩa
+`%s` Chuỗi
+`%d` Số nguyên
+`%f` Số thực
+`%.2f` Số thực lấy 2 chữ số sau dấu phẩy
+
+Ví dụ:
+
+```
+first_name = "Lê Công"
+last_name = "Luyến"
+age = 20
+country = "Việt Nam"
+city = "Hồ Chí Minh City"
+
+sentence = "Tôi tên là %s %s. Tôi %d tuổi. Tôi sống ở %s, %s." % (first_name, last_name, age, city, country)
+
+print(sentence)
+```
+
+Kết quả:
+
+```
+Tôi tên là Lê Công Luyến. Tôi 20 tuổi. Tôi sống ở Hồ Chí Minh City, Việt Nam.
+```
+
+Ví dụ với số thực:
+
+```
 radius = 10
 pi = 3.14
 area = pi * radius ** 2
 
-result = 'The area is %.2f' % area
-print(result)  # The area is 314.00
-```
+result = "Diện tích hình tròn có bán kính %d là %.2f." % (radius, area)
 
----
-
-### 5.2 New Style Formatting - dùng `.format()`
-
-Cách này dùng `{}` làm vị trí để đưa dữ liệu vào.
-
-```python
-first_name = 'Nguyen'
-last_name = 'Giang'
-language = 'Python'
-
-text = 'I am {} {}. I learn {}.'.format(first_name, last_name, language)
-print(text)
-```
-
-Ví dụ tính toán:
-
-```python
-a = 4
-b = 3
-
-print('{} + {} = {}'.format(a, b, a + b))
-print('{} - {} = {}'.format(a, b, a - b))
-print('{} * {} = {}'.format(a, b, a * b))
-print('{} / {} = {:.2f}'.format(a, b, a / b))
+print(result)
 ```
 
 Kết quả:
 
-```text
+```
+Diện tích hình tròn có bán kính 10 là 314.00.
+```
+
+---
+
+## 10. Định dạng chuỗi bằng `.format()`
+
+Cách này dùng dấu `{}` để đánh dấu vị trí cần chèn dữ liệu.
+
+Ví dụ:
+
+```
+first_name = "Lê Công"
+last_name = "Luyến"
+age = 20
+country = "Việt Nam"
+city = "Hồ Chí Minh City"
+
+sentence = "Tôi tên là {} {}. Tôi {} tuổi. Tôi sống ở {}, {}.".format(first_name, last_name, age, city, country)
+
+print(sentence)
+```
+
+Kết quả:
+
+```
+Tôi tên là Lê Công Luyến. Tôi 20 tuổi. Tôi sống ở Hồ Chí Minh City, Việt Nam.
+```
+
+Ví dụ với phép toán:
+
+```
+a = 4
+b = 3
+
+print("{} + {} = {}".format(a, b, a + b))
+print("{} - {} = {}".format(a, b, a - b))
+print("{} * {} = {}".format(a, b, a * b))
+print("{} / {} = {:.2f}".format(a, b, a / b))
+```
+
+Kết quả:
+
+```
 4 + 3 = 7
 4 - 3 = 1
 4 * 3 = 12
@@ -266,892 +429,1006 @@ Kết quả:
 
 ---
 
-### 5.3 f-string - Python 3.6+
+## 11. Định dạng chuỗi bằng f-string
 
-Đây là cách nên dùng nhiều nhất vì dễ đọc và ngắn gọn.
+f-string là cách định dạng chuỗi ngắn gọn và dễ đọc.
 
-Cú pháp:
-
-```python
-f'Text {variable}'
-```
+Để dùng f-string, mình đặt chữ `f` trước chuỗi, sau đó đặt biến vào trong dấu `{}`.
 
 Ví dụ:
 
-```python
-first_name = 'Nguyen'
+```
+first_name = "Lê Công"
+last_name = "Luyến"
 age = 20
+country = "Việt Nam"
+city = "Hồ Chí Minh City"
 
-print(f'My name is {first_name}. I am {age} years old.')
+print(f"Tôi tên là {first_name} {last_name}.")
+print(f"Tôi {age} tuổi.")
+print(f"Tôi sống ở {city}, {country}.")
 ```
 
-Ví dụ với phép tính:
+Kết quả:
 
-```python
+```
+Tôi tên là Lê Công Luyến.
+Tôi 20 tuổi.
+Tôi sống ở Hồ Chí Minh City, Việt Nam.
+```
+
+Ví dụ với phép toán:
+
+```
 a = 4
 b = 3
 
-print(f'{a} + {b} = {a + b}')
-print(f'{a} - {b} = {a - b}')
-print(f'{a} * {b} = {a * b}')
-print(f'{a} / {b} = {a / b:.2f}')
+print(f"{a} + {b} = {a + b}")
+print(f"{a} - {b} = {a - b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b:.2f}")
 ```
 
-> Ghi nhớ: `:.2f` nghĩa là lấy 2 chữ số sau dấu chấm thập phân.
+Kết quả:
+
+```
+4 + 3 = 7
+4 - 3 = 1
+4 * 3 = 12
+4 / 3 = 1.33
+```
+
+Ghi nhớ:
+
+Nên ưu tiên dùng f-string vì nó dễ đọc và dễ viết hơn.
 
 ---
 
-## 6. String là một chuỗi các ký tự
+## 12. String là một chuỗi các ký tự
 
-Trong Python, string có thể được xem như một dãy ký tự.
+Trong Python, string được xem như một dãy các ký tự.
+
+Mỗi ký tự trong string có một vị trí gọi là index.
+
+Index trong Python bắt đầu từ `0`.
 
 Ví dụ:
 
-```python
-language = 'Python'
+```
+language = "Python"
+
+print(language[0])
+print(language[1])
+print(language[2])
+print(language[3])
+print(language[4])
+print(language[5])
 ```
 
-Chuỗi trên gồm các ký tự:
+Kết quả:
 
-```text
-P y t h o n
+```
+P
+y
+t
+h
+o
+n
 ```
 
-Mỗi ký tự có một vị trí gọi là **index**.
+Giải thích:
+
+Chuỗi `"Python"` có các index như sau:
+
+```
+P   y   t   h   o   n
+0   1   2   3   4   5
+```
 
 ---
 
-## 7. Unpacking Characters - Tách ký tự
+## 13. Truy cập ký tự bằng index
 
-Nếu số biến bằng đúng số ký tự trong chuỗi, ta có thể tách từng ký tự ra biến riêng.
+Mình có thể lấy từng ký tự trong chuỗi bằng cách dùng dấu ngoặc vuông `[]`.
 
-```python
-language = 'Python'
+Ví dụ:
+
+```
+name = "Luyến"
+
+first_letter = name[0]
+second_letter = name[1]
+last_letter = name[-1]
+
+print(first_letter)
+print(second_letter)
+print(last_letter)
+```
+
+Kết quả:
+
+```
+L
+u
+n
+```
+
+Giải thích:
+
+* `name[0]` lấy ký tự đầu tiên
+* `name[1]` lấy ký tự thứ hai
+* `name[-1]` lấy ký tự cuối cùng
+
+---
+
+## 14. Index âm trong Python
+
+Ngoài index dương, Python còn hỗ trợ index âm.
+
+Index âm sẽ đếm từ cuối chuỗi về đầu chuỗi.
+
+Ví dụ:
+
+```
+language = "Python"
+
+print(language[-1])
+print(language[-2])
+print(language[-3])
+```
+
+Kết quả:
+
+```
+n
+o
+h
+```
+
+Giải thích:
+
+* `-1` là ký tự cuối cùng
+* `-2` là ký tự gần cuối
+* `-3` là ký tự đứng trước `-2`
+
+---
+
+## 15. Tách ký tự trong chuỗi
+
+Mình có thể tách các ký tự trong chuỗi và gán cho nhiều biến.
+
+Ví dụ:
+
+```
+language = "Python"
+
 a, b, c, d, e, f = language
 
-print(a)  # P
-print(b)  # y
-print(c)  # t
-print(d)  # h
-print(e)  # o
-print(f)  # n
+print(a)
+print(b)
+print(c)
+print(d)
+print(e)
+print(f)
 ```
 
-> Lưu ý: Nếu số biến không bằng số ký tự, Python sẽ báo lỗi.
+Kết quả:
+
+```
+P
+y
+t
+h
+o
+n
+```
+
+Lưu ý:
+
+Số lượng biến phải bằng số lượng ký tự trong chuỗi.
 
 ---
 
-## 8. Truy cập ký tự bằng index
-
-Trong lập trình, vị trí bắt đầu từ `0`.
-
-```python
-language = 'Python'
-```
-
-| Ký tự | P | y | t | h | o | n |
-|---|---|---|---|---|---|---|
-| Index dương | 0 | 1 | 2 | 3 | 4 | 5 |
-| Index âm | -6 | -5 | -4 | -3 | -2 | -1 |
-
-Ví dụ:
-
-```python
-language = 'Python'
-
-print(language[0])   # P
-print(language[1])   # y
-print(language[5])   # n
-print(language[-1])  # n
-print(language[-2])  # o
-```
-
-Muốn lấy ký tự cuối bằng index dương:
-
-```python
-last_index = len(language) - 1
-print(language[last_index])
-```
-
-> Ghi nhớ: index cuối cùng luôn bằng `len(chuoi) - 1`.
-
----
-
-## 9. Slicing - Cắt chuỗi
+## 16. Cắt chuỗi - Slicing
 
 Slicing dùng để lấy một phần của chuỗi.
 
 Cú pháp:
 
-```python
+```
 string[start:end]
 ```
 
 Trong đó:
 
-- `start`: vị trí bắt đầu.
-- `end`: vị trí kết thúc nhưng **không lấy ký tự tại end**.
+* `start` là vị trí bắt đầu
+* `end` là vị trí kết thúc
+* Ký tự ở vị trí `end` sẽ không được lấy
 
 Ví dụ:
 
-```python
-language = 'Python'
+```
+language = "Python"
 
-print(language[0:3])  # Pyt
-print(language[3:6])  # hon
+first_three = language[0:3]
+last_three = language[3:6]
+
+print(first_three)
+print(last_three)
+```
+
+Kết quả:
+
+```
+Pyt
+hon
 ```
 
 Giải thích:
 
-```python
-language[0:3]
-```
-
-lấy ký tự ở index `0`, `1`, `2`, nhưng không lấy index `3`.
+* `language[0:3]` lấy từ index `0` đến trước index `3`
+* `language[3:6]` lấy từ index `3` đến trước index `6`
 
 ---
 
-### 9.1 Bỏ start hoặc end
+## 17. Một số cách slicing thường dùng
 
-```python
-language = 'Python'
+Ví dụ:
 
-print(language[:3])   # Pyt
-print(language[3:])   # hon
-print(language[-3:])  # hon
+```
+city = "Ho Chi Minh City"
+
+print(city[0:2])
+print(city[3:6])
+print(city[7:11])
+print(city[-4:])
 ```
 
-Ý nghĩa:
+Kết quả:
 
-- `[:3]`: lấy từ đầu đến trước index 3.
-- `[3:]`: lấy từ index 3 đến hết.
-- `[-3:]`: lấy 3 ký tự cuối.
+```
+Ho
+Chi
+Minh
+City
+```
+
+Giải thích:
+
+* `city[0:2]` lấy `"Ho"`
+* `city[3:6]` lấy `"Chi"`
+* `city[7:11]` lấy `"Minh"`
+* `city[-4:]` lấy 4 ký tự cuối
 
 ---
 
-### 9.2 Đảo ngược chuỗi
+## 18. Bỏ trống start hoặc end khi slicing
 
-Dùng slicing với bước nhảy `-1`:
+Khi slicing, mình có thể bỏ trống `start` hoặc `end`.
 
-```python
-greeting = 'Hello, World!'
+Ví dụ:
+
+```
+language = "Python"
+
+print(language[:3])
+print(language[3:])
+print(language[:])
+```
+
+Kết quả:
+
+```
+Pyt
+hon
+Python
+```
+
+Giải thích:
+
+* `language[:3]` lấy từ đầu đến trước index `3`
+* `language[3:]` lấy từ index `3` đến hết
+* `language[:]` lấy toàn bộ chuỗi
+
+---
+
+## 19. Đảo ngược chuỗi
+
+Để đảo ngược chuỗi, mình dùng slicing với cú pháp `[::-1]`.
+
+Ví dụ:
+
+```
+greeting = "Hello, World!"
+
 print(greeting[::-1])
 ```
 
 Kết quả:
 
-```text
+```
 !dlroW ,olleH
 ```
 
+Ví dụ khác:
+
+```
+name = "Luyen"
+
+print(name[::-1])
+```
+
+Kết quả:
+
+```
+neyuL
+```
+
+Giải thích:
+
+`[::-1]` nghĩa là đi từ cuối chuỗi về đầu chuỗi.
+
 ---
 
-### 9.3 Bỏ qua ký tự khi slicing
+## 20. Bỏ qua ký tự khi slicing
 
-Cú pháp đầy đủ:
+Slicing có thể có thêm bước nhảy.
 
-```python
+Cú pháp:
+
+```
 string[start:end:step]
 ```
 
 Ví dụ:
 
-```python
-language = 'Python'
-print(language[0:6:2])  # Pto
+```
+language = "Python"
+
+result = language[0:6:2]
+
+print(result)
+```
+
+Kết quả:
+
+```
+Pto
 ```
 
 Giải thích:
 
-- Bắt đầu từ index `0`.
-- Đi đến trước index `6`.
-- Mỗi lần nhảy `2` bước.
-
-Chuỗi `Python` sẽ lấy: `P`, `t`, `o`.
+* Chuỗi ban đầu là `"Python"`
+* Lấy từ index `0` đến trước index `6`
+* Mỗi lần nhảy 2 bước
+* Kết quả là `"Pto"`
 
 ---
 
-## 10. Các method quan trọng của string
+## 21. String Methods trong Python
 
-String method là các hàm có sẵn dùng để xử lý chuỗi.
+String methods là các hàm có sẵn để xử lý chuỗi.
 
-Cú pháp chung:
+Một số string methods thường dùng:
 
-```python
-string.method()
-```
+Method Ý nghĩa
+`capitalize()` Viết hoa chữ cái đầu tiên
+`count()` Đếm số lần xuất hiện của chuỗi con
+`endswith()` Kiểm tra chuỗi có kết thúc bằng một chuỗi khác không
+`find()` Tìm vị trí xuất hiện đầu tiên của chuỗi con
+`rfind()` Tìm vị trí xuất hiện cuối cùng của chuỗi con
+`format()` Định dạng chuỗi
+`isalnum()` Kiểm tra chuỗi có gồm chữ và số không
+`isalpha()` Kiểm tra chuỗi có toàn chữ cái không
+`isdigit()` Kiểm tra chuỗi có toàn chữ số không
+`isidentifier()` Kiểm tra chuỗi có hợp lệ làm tên biến không
+`islower()` Kiểm tra chuỗi có toàn chữ thường không
+`isupper()` Kiểm tra chuỗi có toàn chữ hoa không
+`join()` Nối các phần tử thành chuỗi
+`strip()` Xóa khoảng trắng ở đầu và cuối chuỗi
+`replace()` Thay thế chuỗi con
+`split()` Tách chuỗi thành list
+`title()` Viết hoa chữ cái đầu của mỗi từ
+`swapcase()` Đổi chữ hoa thành chữ thường và ngược lại
+`startswith()` Kiểm tra chuỗi có bắt đầu bằng một chuỗi khác không
+
+---
+
+## 22. Method `capitalize()`
+
+Method `capitalize()` dùng để viết hoa chữ cái đầu tiên của chuỗi.
 
 Ví dụ:
 
-```python
-text = 'python'
-print(text.upper())
 ```
+challenge = "thirty days of python"
 
----
-
-### 10.1 `capitalize()`
-
-Viết hoa chữ cái đầu tiên của chuỗi.
-
-```python
-challenge = 'thirty days of python'
 print(challenge.capitalize())
 ```
 
 Kết quả:
 
-```text
+```
 Thirty days of python
 ```
 
+Giải thích:
+
+Chỉ chữ cái đầu tiên của cả chuỗi được viết hoa.
+
 ---
 
-### 10.2 `title()`
+## 23. Method `count()`
 
-Viết hoa chữ cái đầu của từng từ.
+Method `count()` dùng để đếm số lần xuất hiện của một ký tự hoặc một chuỗi con.
 
-```python
-challenge = 'thirty days of python'
-print(challenge.title())
+Ví dụ:
+
+```
+challenge = "thirty days of python"
+
+print(challenge.count("y"))
+print(challenge.count("th"))
 ```
 
 Kết quả:
 
-```text
+```
+3
+2
+```
+
+Giải thích:
+
+* Chữ `"y"` xuất hiện 3 lần
+* Chuỗi `"th"` xuất hiện 2 lần
+
+---
+
+## 24. Method `endswith()`
+
+Method `endswith()` dùng để kiểm tra chuỗi có kết thúc bằng một chuỗi khác hay không.
+
+Ví dụ:
+
+```
+challenge = "thirty days of python"
+
+print(challenge.endswith("on"))
+print(challenge.endswith("tion"))
+```
+
+Kết quả:
+
+```
+True
+False
+```
+
+Giải thích:
+
+* `"thirty days of python"` kết thúc bằng `"on"` nên kết quả là `True`
+* Chuỗi này không kết thúc bằng `"tion"` nên kết quả là `False`
+
+---
+
+## 25. Method `find()`
+
+Method `find()` dùng để tìm vị trí xuất hiện đầu tiên của một ký tự hoặc chuỗi con.
+
+Ví dụ:
+
+```
+challenge = "thirty days of python"
+
+print(challenge.find("y"))
+print(challenge.find("th"))
+```
+
+Kết quả:
+
+```
+5
+0
+```
+
+Giải thích:
+
+* Ký tự `"y"` đầu tiên nằm ở index `5`
+* Chuỗi `"th"` đầu tiên bắt đầu ở index `0`
+
+Nếu không tìm thấy, `find()` sẽ trả về `-1`.
+
+Ví dụ:
+
+```
+challenge = "thirty days of python"
+
+print(challenge.find("java"))
+```
+
+Kết quả:
+
+```
+-1
+```
+
+---
+
+## 26. Method `rfind()`
+
+Method `rfind()` dùng để tìm vị trí xuất hiện cuối cùng của một ký tự hoặc chuỗi con.
+
+Ví dụ:
+
+```
+challenge = "thirty days of python"
+
+print(challenge.rfind("y"))
+```
+
+Kết quả:
+
+```
+16
+```
+
+Giải thích:
+
+`rfind()` tìm từ bên phải qua bên trái, nhưng kết quả vẫn là index tính từ trái sang phải.
+
+---
+
+## 27. Method `isalnum()`
+
+Method `isalnum()` kiểm tra chuỗi có chỉ gồm chữ cái và chữ số hay không.
+
+Ví dụ:
+
+```
+print("Python3".isalnum())
+print("Python 3".isalnum())
+```
+
+Kết quả:
+
+```
+True
+False
+```
+
+Giải thích:
+
+* `"Python3"` chỉ gồm chữ và số nên kết quả là `True`
+* `"Python 3"` có khoảng trắng nên kết quả là `False`
+
+---
+
+## 28. Method `isalpha()`
+
+Method `isalpha()` kiểm tra chuỗi có chỉ gồm chữ cái hay không.
+
+Ví dụ:
+
+```
+print("Python".isalpha())
+print("Python3".isalpha())
+```
+
+Kết quả:
+
+```
+True
+False
+```
+
+Giải thích:
+
+* `"Python"` chỉ có chữ cái nên kết quả là `True`
+* `"Python3"` có số `3` nên kết quả là `False`
+
+---
+
+## 29. Method `isdigit()`
+
+Method `isdigit()` kiểm tra chuỗi có chỉ gồm chữ số hay không.
+
+Ví dụ:
+
+```
+print("123".isdigit())
+print("123abc".isdigit())
+```
+
+Kết quả:
+
+```
+True
+False
+```
+
+Giải thích:
+
+* `"123"` chỉ gồm chữ số nên kết quả là `True`
+* `"123abc"` có chữ cái nên kết quả là `False`
+
+---
+
+## 30. Method `isidentifier()`
+
+Method `isidentifier()` kiểm tra chuỗi có hợp lệ để làm tên biến trong Python hay không.
+
+Ví dụ:
+
+```
+print("first_name".isidentifier())
+print("first-name".isidentifier())
+print("1first_name".isidentifier())
+```
+
+Kết quả:
+
+```
+True
+False
+False
+```
+
+Giải thích:
+
+* `first_name` hợp lệ vì có chữ cái và dấu gạch dưới
+* `first-name` không hợp lệ vì có dấu `-`
+* `1first_name` không hợp lệ vì tên biến không được bắt đầu bằng số
+
+---
+
+## 31. Method `islower()` và `isupper()`
+
+Method `islower()` kiểm tra chuỗi có toàn chữ thường hay không.
+
+Method `isupper()` kiểm tra chuỗi có toàn chữ hoa hay không.
+
+Ví dụ:
+
+```
+print("python".islower())
+print("Python".islower())
+print("PYTHON".isupper())
+print("Python".isupper())
+```
+
+Kết quả:
+
+```
+True
+False
+True
+False
+```
+
+Giải thích:
+
+* `"python"` toàn chữ thường nên `islower()` trả về `True`
+* `"PYTHON"` toàn chữ hoa nên `isupper()` trả về `True`
+
+---
+
+## 32. Method `join()`
+
+Method `join()` dùng để nối các phần tử trong một list thành một chuỗi.
+
+Ví dụ:
+
+```
+words = ["Thirty", "Days", "Of", "Python"]
+
+sentence = " ".join(words)
+
+print(sentence)
+```
+
+Kết quả:
+
+```
 Thirty Days Of Python
-```
-
----
-
-### 10.3 `upper()`
-
-Chuyển toàn bộ chữ cái thành chữ hoa.
-
-```python
-challenge = 'thirty days of python'
-print(challenge.upper())
-```
-
-Kết quả:
-
-```text
-THIRTY DAYS OF PYTHON
-```
-
----
-
-### 10.4 `lower()`
-
-Chuyển toàn bộ chữ cái thành chữ thường.
-
-```python
-challenge = 'THIRTY DAYS OF PYTHON'
-print(challenge.lower())
-```
-
-Kết quả:
-
-```text
-thirty days of python
-```
-
----
-
-### 10.5 `swapcase()`
-
-Đổi chữ hoa thành chữ thường và chữ thường thành chữ hoa.
-
-```python
-challenge = 'Thirty Days Of Python'
-print(challenge.swapcase())
-```
-
-Kết quả:
-
-```text
-tHIRTY dAYS oF pYTHON
-```
-
----
-
-### 10.6 `count()`
-
-Đếm số lần xuất hiện của một chuỗi con.
-
-```python
-challenge = 'thirty days of python'
-
-print(challenge.count('y'))   # 3
-print(challenge.count('th'))  # 2
-```
-
-Có thể giới hạn vùng tìm kiếm:
-
-```python
-print(challenge.count('y', 7, 14))
-```
-
----
-
-### 10.7 `find()`
-
-Tìm vị trí xuất hiện đầu tiên của chuỗi con.
-
-Nếu không tìm thấy, trả về `-1`.
-
-```python
-challenge = 'thirty days of python'
-
-print(challenge.find('y'))   # 5
-print(challenge.find('th'))  # 0
-print(challenge.find('z'))   # -1
-```
-
----
-
-### 10.8 `rfind()`
-
-Tìm vị trí xuất hiện cuối cùng của chuỗi con.
-
-```python
-challenge = 'thirty days of python'
-
-print(challenge.rfind('y'))   # 16
-print(challenge.rfind('th'))  # 17
-```
-
----
-
-### 10.9 `index()`
-
-Giống `find()`, nhưng nếu không tìm thấy sẽ báo lỗi.
-
-```python
-challenge = 'thirty days of python'
-
-print(challenge.index('da'))  # 7
-```
-
-Nếu tìm chuỗi không tồn tại:
-
-```python
-print(challenge.index('java'))  # ValueError
-```
-
-> Phân biệt nhanh:  
-> `find()` không thấy thì trả về `-1`.  
-> `index()` không thấy thì báo lỗi.
-
----
-
-### 10.10 `rindex()`
-
-Giống `rfind()`, nhưng nếu không tìm thấy sẽ báo lỗi.
-
-```python
-challenge = 'thirty days of python'
-print(challenge.rindex('on'))
-```
-
----
-
-### 10.11 `startswith()`
-
-Kiểm tra chuỗi có bắt đầu bằng một chuỗi con nào đó không.
-
-```python
-challenge = 'thirty days of python'
-
-print(challenge.startswith('thirty'))  # True
-print(challenge.startswith('30'))      # False
-```
-
----
-
-### 10.12 `endswith()`
-
-Kiểm tra chuỗi có kết thúc bằng một chuỗi con nào đó không.
-
-```python
-challenge = 'thirty days of python'
-
-print(challenge.endswith('python'))  # True
-print(challenge.endswith('tion'))    # False
-```
-
----
-
-### 10.13 `replace()`
-
-Thay thế chuỗi con bằng chuỗi khác.
-
-```python
-challenge = 'thirty days of python'
-print(challenge.replace('python', 'coding'))
-```
-
-Kết quả:
-
-```text
-thirty days of coding
-```
-
----
-
-### 10.14 `split()`
-
-Tách chuỗi thành list.
-
-Mặc định, `split()` tách theo dấu cách.
-
-```python
-challenge = 'thirty days of python'
-print(challenge.split())
-```
-
-Kết quả:
-
-```python
-['thirty', 'days', 'of', 'python']
-```
-
-Tách theo dấu phẩy:
-
-```python
-text = 'Facebook, Google, Microsoft, Apple'
-print(text.split(', '))
-```
-
-Kết quả:
-
-```python
-['Facebook', 'Google', 'Microsoft', 'Apple']
-```
-
----
-
-### 10.15 `join()`
-
-Nối các phần tử trong list thành một chuỗi.
-
-```python
-web_tech = ['HTML', 'CSS', 'JavaScript', 'React']
-
-result = ' '.join(web_tech)
-print(result)
-```
-
-Kết quả:
-
-```text
-HTML CSS JavaScript React
 ```
 
 Ví dụ khác:
 
-```python
-result = '# '.join(web_tech)
+```
+words = ["30", "Days", "Python"]
+
+result = "-".join(words)
+
 print(result)
 ```
 
 Kết quả:
 
-```text
-HTML# CSS# JavaScript# React
 ```
+30-Days-Python
+```
+
+Giải thích:
+
+* `" ".join(words)` nối các phần tử bằng khoảng trắng
+* `"-".join(words)` nối các phần tử bằng dấu gạch ngang
 
 ---
 
-### 10.16 `strip()`
+## 33. Method `strip()`
 
-Xóa ký tự thừa ở đầu và cuối chuỗi.
+Method `strip()` dùng để xóa khoảng trắng ở đầu và cuối chuỗi.
 
-Thường dùng để xóa khoảng trắng.
+Ví dụ:
 
-```python
-text = '   Coding For All   '
-print(text.strip())
+```
+city = "   Hồ Chí Minh City   "
+
+print(city.strip())
 ```
 
 Kết quả:
 
-```text
-Coding For All
+```
+Hồ Chí Minh City
 ```
 
-Có thể truyền ký tự muốn xóa:
+Giải thích:
 
-```python
-challenge = 'thirty days of pythoonnn'
-print(challenge.strip('noth'))
-```
-
-> Lưu ý: `strip()` chỉ xóa ở đầu và cuối chuỗi, không xóa phần giữa.
+Khoảng trắng ở đầu và cuối chuỗi đã bị xóa.
 
 ---
 
-### 10.17 `expandtabs()`
+## 34. Method `replace()`
 
-Thay ký tự tab `\t` bằng khoảng trắng.
+Method `replace()` dùng để thay thế một chuỗi con bằng chuỗi khác.
 
-```python
-challenge = 'thirty\tdays\tof\tpython'
+Ví dụ:
 
-print(challenge.expandtabs())
-print(challenge.expandtabs(10))
 ```
+challenge = "thirty days of python"
+
+print(challenge.replace("python", "coding"))
+```
+
+Kết quả:
+
+```
+thirty days of coding
+```
+
+Giải thích:
+
+Chuỗi `"python"` đã được thay bằng `"coding"`.
 
 ---
 
-## 11. Các method kiểm tra chuỗi
+## 35. Method `split()`
 
-Các method này thường trả về `True` hoặc `False`.
+Method `split()` dùng để tách một chuỗi thành list.
 
----
+Ví dụ:
 
-### 11.1 `isalnum()`
+```
+sentence = "Tôi sống ở Hồ Chí Minh City"
 
-Kiểm tra chuỗi có phải chỉ gồm chữ và số không.
-
-```python
-print('ThirtyDaysPython'.isalnum())      # True
-print('30DaysPython'.isalnum())          # True
-print('thirty days of python'.isalnum()) # False vì có dấu cách
+print(sentence.split())
 ```
 
----
+Kết quả:
 
-### 11.2 `isalpha()`
-
-Kiểm tra chuỗi có phải chỉ gồm chữ cái không.
-
-```python
-print('ThirtyDaysPython'.isalpha())      # True
-print('thirty days of python'.isalpha()) # False vì có dấu cách
-print('123'.isalpha())                   # False
+```
+['Tôi', 'sống', 'ở', 'Hồ', 'Chí', 'Minh', 'City']
 ```
 
----
+Giải thích:
 
-### 11.3 `isdecimal()`
+Mặc định, `split()` sẽ tách chuỗi dựa trên khoảng trắng.
 
-Kiểm tra chuỗi có phải số thập phân từ `0-9` không.
+Ví dụ khác:
 
-```python
-print('123'.isdecimal())   # True
-print('12 3'.isdecimal())  # False
-print('10.5'.isdecimal())  # False
+```
+data = "Lê Công Luyến,20,Việt Nam,Hồ Chí Minh City"
+
+print(data.split(","))
 ```
 
----
+Kết quả:
 
-### 11.4 `isdigit()`
-
-Kiểm tra chuỗi có phải chữ số không.
-
-```python
-print('30'.isdigit())  # True
-print('Thirty'.isdigit())  # False
 ```
-
-Một số ký tự Unicode dạng số cũng có thể trả về `True`.
-
-```python
-print('\u00B2'.isdigit())  # True
+['Lê Công Luyến', '20', 'Việt Nam', 'Hồ Chí Minh City']
 ```
 
 ---
 
-### 11.5 `isnumeric()`
+## 36. Method `title()`
 
-Kiểm tra chuỗi có phải dạng số hoặc ký tự liên quan đến số không.
+Method `title()` dùng để viết hoa chữ cái đầu tiên của mỗi từ.
 
-```python
-print('10'.isnumeric())      # True
-print('\u00BD'.isnumeric())  # True, ký tự ½
-print('10.5'.isnumeric())    # False
+Ví dụ:
+
 ```
+text = "le cong luyen"
+
+print(text.title())
+```
+
+Kết quả:
+
+```
+Le Cong Luyen
+```
+
+Giải thích:
+
+Mỗi từ trong chuỗi đều được viết hoa chữ cái đầu.
 
 ---
 
-### 11.6 `isidentifier()`
+## 37. Method `swapcase()`
 
-Kiểm tra chuỗi có thể dùng làm tên biến hợp lệ không.
+Method `swapcase()` dùng để đổi chữ hoa thành chữ thường và chữ thường thành chữ hoa.
 
-```python
-print('30DaysOfPython'.isidentifier())       # False vì bắt đầu bằng số
-print('thirty_days_of_python'.isidentifier()) # True
+Ví dụ:
+
+```
+text = "Python Is Fun"
+
+print(text.swapcase())
 ```
 
-Tên biến hợp lệ thường:
+Kết quả:
 
-- Không bắt đầu bằng số.
-- Không có dấu cách.
-- Có thể dùng chữ, số, dấu gạch dưới `_`.
+```
+pYTHON iS fUN
+```
+
+Giải thích:
+
+* Chữ hoa đổi thành chữ thường
+* Chữ thường đổi thành chữ hoa
 
 ---
 
-### 11.7 `islower()`
+## 38. Method `startswith()`
 
-Kiểm tra các chữ cái trong chuỗi có phải chữ thường không.
+Method `startswith()` dùng để kiểm tra chuỗi có bắt đầu bằng một chuỗi khác hay không.
 
-```python
-print('thirty days of python'.islower()) # True
-print('Thirty days of python'.islower()) # False
+Ví dụ:
+
 ```
+city = "Hồ Chí Minh City"
+
+print(city.startswith("Hồ"))
+print(city.startswith("Đà"))
+```
+
+Kết quả:
+
+```
+True
+False
+```
+
+Giải thích:
+
+* `"Hồ Chí Minh City"` bắt đầu bằng `"Hồ"` nên kết quả là `True`
+* Chuỗi này không bắt đầu bằng `"Đà"` nên kết quả là `False`
+
+---
+## 40. Tổng kết bài học
+
+Sau Day 04, mình đã học được:
+
+* String là kiểu dữ liệu dùng để lưu văn bản
+* Có thể tạo string bằng nháy đơn, nháy kép hoặc ba dấu nháy
+* Dùng `+` để nối chuỗi
+* Dùng `len()` để kiểm tra độ dài chuỗi
+* Dùng escape sequence như `\n`, `\t`, `\\`, `\"`, `\'`
+* Có thể định dạng chuỗi bằng `%`, `.format()` hoặc f-string
+* String có index bắt đầu từ `0`
+* Có thể dùng index âm để lấy ký tự từ cuối chuỗi
+* Có thể dùng slicing để cắt chuỗi
+* Có thể dùng `[::-1]` để đảo ngược chuỗi
+* String methods giúp xử lý chuỗi nhanh hơn
 
 ---
 
-### 11.8 `isupper()`
+* * *
 
-Kiểm tra các chữ cái trong chuỗi có phải chữ hoa không.
+## Bài tập - Day 04
 
-```python
-print('THIRTY DAYS OF PYTHON'.isupper()) # True
-print('thirty days of python'.isupper()) # False
-```
+1. Nối các chuỗi `'Thirty'`, `'Days'`, `'Of'`, `'Python'` thành một chuỗi duy nhất: `'Thirty Days Of Python'`.
 
----
+2. Nối các chuỗi `'Coding'`, `'For'`, `'All'` thành một chuỗi duy nhất: `'Coding For All'`.
 
-## 12. Bảng tổng hợp method cần nhớ
+3. Khai báo một biến tên là `company` và gán giá trị ban đầu là `"Coding For All"`.
 
-| Method | Công dụng ngắn gọn |
-|---|---|
-| `capitalize()` | Viết hoa chữ cái đầu chuỗi |
-| `title()` | Viết hoa chữ cái đầu mỗi từ |
-| `upper()` | Chuyển thành chữ hoa |
-| `lower()` | Chuyển thành chữ thường |
-| `swapcase()` | Đổi hoa thành thường, thường thành hoa |
-| `count()` | Đếm số lần xuất hiện |
-| `find()` | Tìm vị trí đầu tiên, không thấy trả `-1` |
-| `rfind()` | Tìm vị trí cuối cùng, không thấy trả `-1` |
-| `index()` | Tìm vị trí đầu tiên, không thấy báo lỗi |
-| `rindex()` | Tìm vị trí cuối cùng, không thấy báo lỗi |
-| `startswith()` | Kiểm tra chuỗi bắt đầu bằng gì |
-| `endswith()` | Kiểm tra chuỗi kết thúc bằng gì |
-| `replace()` | Thay thế chuỗi con |
-| `split()` | Tách chuỗi thành list |
-| `join()` | Nối list thành chuỗi |
-| `strip()` | Xóa ký tự/khoảng trắng ở hai đầu |
-| `isalnum()` | Kiểm tra chữ + số |
-| `isalpha()` | Kiểm tra toàn chữ cái |
-| `isdecimal()` | Kiểm tra số thập phân 0-9 |
-| `isdigit()` | Kiểm tra chữ số |
-| `isnumeric()` | Kiểm tra dạng số |
-| `isidentifier()` | Kiểm tra có phải tên biến hợp lệ |
-| `islower()` | Kiểm tra chữ thường |
-| `isupper()` | Kiểm tra chữ hoa |
+4. In biến `company` bằng hàm `print()`.
 
----
+5. In độ dài của chuỗi trong biến `company` bằng hàm `len()` và `print()`.
 
-## 13. Ghi nhớ nhanh khi làm bài tập Day 04
+6. Chuyển tất cả ký tự trong biến `company` thành chữ hoa bằng method `upper()`.
 
-### Công thức nối chuỗi
+7. Chuyển tất cả ký tự trong biến `company` thành chữ thường bằng method `lower()`.
 
-```python
-result = string1 + ' ' + string2
-```
+8. Sử dụng các method `capitalize()`, `title()`, `swapcase()` để định dạng chuỗi `"Coding For All"`.
 
-### Công thức lấy độ dài
+9. Cắt từ đầu tiên ra khỏi chuỗi `"Coding For All"`.
 
-```python
-len(string)
-```
+10. Kiểm tra chuỗi `"Coding For All"` có chứa từ `"Coding"` hay không bằng method `index()`, `find()` hoặc method khác.
 
-### Công thức lấy ký tự đầu
+11. Thay thế từ `"Coding"` trong chuỗi `"Coding For All"` thành `"Python"`.
 
-```python
-string[0]
-```
+12. Thay đổi chuỗi `"Python for Everyone"` thành `"Python for All"` bằng method `replace()` hoặc method khác.
 
-### Công thức lấy ký tự cuối
+13. Tách chuỗi `"Coding For All"` thành list bằng khoảng trắng làm dấu phân tách.
 
-```python
-string[-1]
-```
+14. Tách chuỗi `"Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon"` thành list bằng dấu phẩy.
 
-hoặc:
+15. Lấy ký tự ở index `0` trong chuỗi `"Coding For All"`.
 
-```python
-string[len(string) - 1]
-```
+16. Tìm index cuối cùng của chuỗi `"Coding For All"`.
 
-### Công thức cắt chuỗi
+17. Lấy ký tự ở index `10` trong chuỗi `"Coding For All"`.
 
-```python
-string[start:end]
-```
+18. Tạo từ viết tắt cho tên `"Python For Everyone"`.
 
-### Công thức đảo chuỗi
+19. Tạo từ viết tắt cho tên `"Coding For All"`.
 
-```python
-string[::-1]
-```
+20. Dùng `index()` để tìm vị trí xuất hiện đầu tiên của ký tự `"C"` trong chuỗi `"Coding For All"`.
 
-### Công thức format nên dùng
+21. Dùng `index()` để tìm vị trí xuất hiện đầu tiên của ký tự `"F"` trong chuỗi `"Coding For All"`.
 
-```python
-name = 'Giang'
-age = 20
-print(f'My name is {name}. I am {age} years old.')
-```
+22. Dùng `rfind()` để tìm vị trí xuất hiện cuối cùng của ký tự `"l"` trong chuỗi `"Coding For All People"`.
 
----
+23. Dùng `index()` hoặc `find()` để tìm vị trí xuất hiện đầu tiên của từ `"because"` trong câu: `"You cannot end a sentence with because because because is a conjunction"`.
 
-## 14. Ví dụ tổng hợp
+24. Dùng `rindex()` để tìm vị trí xuất hiện cuối cùng của từ `"because"` trong câu: `"You cannot end a sentence with because because because is a conjunction"`.
 
-```python
-company = 'Coding For All'
+25. Cắt cụm từ `"because because because"` ra khỏi câu: `"You cannot end a sentence with because because because is a conjunction"`.
 
-print(company)                 # Coding For All
-print(len(company))            # 14
-print(company.upper())         # CODING FOR ALL
-print(company.lower())         # coding for all
-print(company.capitalize())    # Coding for all
-print(company.title())         # Coding For All
-print(company.swapcase())      # cODING fOR aLL
+26. Tìm vị trí xuất hiện đầu tiên của từ `"because"` trong câu: `"You cannot end a sentence with because because because is a conjunction"`.
 
-print(company[0])              # C
-print(company[-1])             # l
-print(company[0:6])            # Coding
+27. Cắt cụm từ `"because because because"` ra khỏi câu: `"You cannot end a sentence with because because because is a conjunction"`.
 
-print(company.find('Coding'))  # 0
-print(company.replace('Coding', 'Python'))
-print(company.split())         # ['Coding', 'For', 'All']
+28. Kiểm tra chuỗi `"Coding For All"` có bắt đầu bằng chuỗi con `"Coding"` hay không.
 
-print(company.startswith('Coding')) # True
-print(company.endswith('coding'))   # False
-```
+29. Kiểm tra chuỗi `"Coding For All"` có kết thúc bằng chuỗi con `"coding"` hay không.
 
----
+30. Xóa khoảng trắng ở đầu và cuối chuỗi `"   Coding For All      "`.
 
-## 15. Lỗi thường gặp
+31. Kiểm tra biến nào sau đây là tên biến hợp lệ trong Python: `"30DaysOfPython"` và `"thirty_days_of_python"`.
 
-### Lỗi 1: Quên dấu cách khi nối chuỗi
+32. Danh sách sau chứa tên một số thư viện Python: `['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']`. Hãy nối các phần tử trong list thành một chuỗi, cách nhau bằng khoảng trắng.
 
-```python
-first = 'Coding'
-second = 'For'
-third = 'All'
+33. Sử dụng escape sequence để in các dòng sau:
 
-print(first + second + third)  # CodingForAll
-```
+    I am enjoying this challenge.
+    I just wonder what is next.
 
-Đúng:
+34. Sử dụng escape sequence để in bảng sau:
 
-```python
-print(first + ' ' + second + ' ' + third)  # Coding For All
-```
+    Name      Age     Country   City
+    Lê Công Luyến  20      Việt Nam  Hồ Chí Minh City
 
----
+35. Sử dụng string formatting để hiển thị kết quả sau:
 
-### Lỗi 2: Nhầm `find()` và `index()`
+    8 + 6 = 14
+    8 - 6 = 2
+    8 * 6 = 48
+    8 / 6 = 1.33
+    8 % 6 = 2
+    8 // 6 = 1
+    8 ** 6 = 262144
 
-```python
-text = 'Python'
+36. Khai báo các biến `first_name`, `last_name`, `age`, `country`, `city` với thông tin của bạn.
 
-print(text.find('Java'))   # -1
-print(text.index('Java'))  # lỗi ValueError
-```
+37. Nối `first_name` và `last_name` để tạo biến `full_name`.
 
-Nếu chưa chắc chuỗi có tồn tại hay không, nên dùng `find()` trước.
+38. In ra câu giới thiệu bản thân bằng f-string với thông tin: họ tên, tuổi, quốc gia và thành phố.
 
----
+39. Lấy 3 ký tự đầu tiên trong chuỗi `"Hồ Chí Minh City"`.
 
-### Lỗi 3: Nhầm slicing lấy cả vị trí end
-
-```python
-text = 'Python'
-print(text[0:3])  # Pyt
-```
-
-`0:3` chỉ lấy index `0`, `1`, `2`, không lấy index `3`.
-
----
-
-### Lỗi 4: Nối chuỗi với số mà không ép kiểu
-
-Sai:
-
-```python
-age = 20
-print('Age: ' + age)
-```
-
-Đúng:
-
-```python
-age = 20
-print('Age: ' + str(age))
-```
-
-Hoặc dùng f-string:
-
-```python
-age = 20
-print(f'Age: {age}')
-```
-
----
-
-## 16. Mini practice tự ôn
-
-Bạn có thể tự thử các câu sau:
-
-```python
-text = 'Coding For All'
-```
-
-1. In ra độ dài của `text`.
-2. Chuyển `text` thành chữ hoa.
-3. Chuyển `text` thành chữ thường.
-4. Lấy ký tự đầu tiên.
-5. Lấy ký tự cuối cùng.
-6. Cắt lấy chữ `Coding`.
-7. Kiểm tra `text` có bắt đầu bằng `Coding` không.
-8. Kiểm tra `text` có kết thúc bằng `All` không.
-9. Thay `Coding` thành `Python`.
-10. Tách chuỗi thành list bằng `split()`.
-
-Gợi ý lời giải:
-
-```python
-text = 'Coding For All'
-
-print(len(text))
-print(text.upper())
-print(text.lower())
-print(text[0])
-print(text[-1])
-print(text[0:6])
-print(text.startswith('Coding'))
-print(text.endswith('All'))
-print(text.replace('Coding', 'Python'))
-print(text.split())
-```
-
----
-
-## Kết luận
-
-Ở Day 04, phần quan trọng nhất là hiểu rằng string trong Python là một dãy ký tự có thứ tự. Vì vậy, bạn có thể:
-
-- Lấy từng ký tự bằng index.
-- Cắt chuỗi bằng slicing.
-- Đảo chuỗi bằng `[::-1]`.
-- Format chuỗi bằng f-string.
-- Xử lý chuỗi bằng các method như `upper()`, `lower()`, `replace()`, `split()`, `join()`, `find()`.
-
-Nếu quên bài này, chỉ cần ôn lại 4 phần chính:
-
-1. Tạo chuỗi.
-2. Index và slicing.
-3. Format chuỗi.
-4. String methods.
-
----
-
-## Nguồn tham khảo
-
-- Asabeneh Yetayeh, **30-Days-Of-Python - Day 04: Strings**, repo GitHub `Asabeneh/30-Days-Of-Python`.
+40. Đảo ngược chuỗi `"Lê Công Luyến"` bằng slicing.
