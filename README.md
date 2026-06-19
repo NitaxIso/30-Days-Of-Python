@@ -8,14 +8,14 @@ Mỗi ngày học sẽ bao gồm phần ghi chú lý thuyết, ví dụ code và
 | Ngày | Chủ đề bài học                                                         |      Trạng thái     |
 | :--: | :--------------------------------------------------------------------- | :-----------------: |
 |  00  | [Cài đặt môi trường](./00_Day_Setup/)                                  |   ✅ Đã hoàn thành   |
-|  01  | [Giới thiệu Python](./01_Day_Introduction/)                            |   ✅ Đã hoàn thành   |
+|  01  | [Introduction](./01_Day_Introduction/)                                 |   ✅ Đã hoàn thành   |
 |  02  | [Biến và Các hàm tích hợp sẵn](./02_Day_Variables_Build_In_Functions/) |   ✅ Đã hoàn thành   |
-|  03  | [Toán tử và Boolean](./03_Day_Operators/)                              |   ✅ Đã hoàn thành   |
-|  04  | [Chuỗi ký tự](./04_Day_Strings/)                                       |     📝 Đang học     |
-|  05  | Danh sách                                                              |     🔒 Chưa học     |
-|  06  | Tuple                                                                  |     🔒 Chưa học     |
-|  07  | Set                                                                    |     🔒 Chưa học     |
-|  08  | Dictionary                                                             |     🔒 Chưa học     |
+|  03  | [Operators](./03_Day_Operators/)                                       |   ✅ Đã hoàn thành   |
+|  04  | [String](./04_Day_Strings/)                                            |   ✅ Đã hoàn thành   |
+|  05  | [List](./05_Day_Lists/)                                                |   ✅ Đã hoàn thành   |
+|  06  | [Tuple](./06_Day_Tuples/)                                              |   ✅ Đã hoàn thành   |
+|  07  | [Set](./07_Day_Sets/)                                                  |   ✅ Đã hoàn thành   |
+|  08  | [Dictionary]                                                           |     🔒 Chưa học     |
 |  09  | Câu điều kiện                                                          |     🔒 Chưa học     |
 |  10  | Vòng lặp                                                               |     🔒 Chưa học     |
 |  11  | Hàm                                                                    |     🔒 Chưa học     |
